@@ -1,8 +1,8 @@
 from distances import Metrics, Distances
 
-__metrics = {Metrics.EUCLIDEAN: Distances.euclidean_distance}
+__metrics = {Metrics.EUCLIDEAN: Distances.euclidean_distance_r2}
 
-def classify(list_of_points:list[tuple[float, float, str]], k:int, point:tuple[float, float], metric:Metrics = Metrics.EUCLIDEAN) -> str:
+def classify_r2(list_of_points:list[tuple[float, float, str]], k:int, point:tuple[float, float], metric:Metrics = Metrics.EUCLIDEAN) -> str:
     distances = []
 
     for current in list_of_points:
