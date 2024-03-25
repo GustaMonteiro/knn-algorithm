@@ -1,5 +1,6 @@
 from Distances import euclidean_distance
 
+
 class Knn:
     def __init__(self) -> None:
         self.__k: int = 1
@@ -16,7 +17,9 @@ class Knn:
             return False
         if not isinstance(obj[0], int):
             return False
-        if not isinstance(obj[1], list) or not all(isinstance(x, float) or isinstance(x, int) for x in obj[1]):
+        if not isinstance(obj[1], list) or not all(
+            isinstance(x, float) or isinstance(x, int) for x in obj[1]
+        ):
             return False
         return True
 
@@ -38,7 +41,7 @@ class Knn:
     def get_k(self):
         return self.__k
 
-    def add_points(self, points:list[tuple[int, list]]) -> int:
+    def add_points(self, points: list[tuple[int, list]]) -> int:
         if not self.is_valid_list_of_points(points):
             print("[Error] - You need to pass a list of tuples to insert points")
             return -1
@@ -53,7 +56,9 @@ class Knn:
         # check if all points has same length
         for point in points:
             if len(point[1]) != self.__n:
-                print("[Error] - Not all provided points are incompatible with the dimension of the current points")
+                print(
+                    "[Error] - Not all provided points are incompatible with the dimension of the current points"
+                )
                 print("[Info] - Dimension of current points:", self.__n)
                 return -1
 
@@ -65,7 +70,9 @@ class Knn:
         return self.__points
 
     def classify(self, point: list[float | int], *args, **kwargs) -> int:
-        metric_to_be_used = kwargs.get("metric") if kwargs.get("metric") is not None else self.__metric
+        metric_to_be_used = (
+            kwargs.get("metric") if kwargs.get("metric") is not None else self.__metric
+        )
 
         if not isinstance(point, list) or len(point) != self.__n:
             return -1
@@ -81,5 +88,3 @@ class Knn:
         print(distances)
 
         return distances[0][1]
-
-
