@@ -8,12 +8,20 @@ points = [
     (2,[6,6]),
 ]
 
-test_point = [4,4.1]
+more_points = [
+    (2,[5,3]),
+    (2,[8,6]),
+    (1,[2,1]),
+]
+
+test_point = [1,4.1]
 
 print('added', knn.add_points(points), 'points')
+print('added', knn.add_points(more_points), 'points')
 
 print(knn.get_points())
 
 classification = knn.classify(test_point)
 
+print("Test point:", test_point)
 print("The result was:", classification)

@@ -57,8 +57,7 @@ class Knn:
                 print("[Info] - Dimension of current points:", self.__n)
                 return -1
 
-        for point in points:
-            self.__points.append(point)
+        self.__points += points
 
         return len(points)
 
