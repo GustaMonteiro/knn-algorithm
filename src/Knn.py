@@ -54,8 +54,8 @@ class Knn:
             self.__n = len(points[0][1])
 
         # check if all points has same length
-        for point in points:
-            if len(point[1]) != self.__n:
+        for _, coordinates in points:
+            if len(coordinates) != self.__n:
                 print(
                     "[Error] - Not all provided points are incompatible with the dimension of the current points"
                 )
@@ -79,12 +79,14 @@ class Knn:
 
         distances = []
 
-        for ref in self.__points:
-            distance = metric_to_be_used(ref[1], point)
-            distances.append((distance, ref[0]))
+        for classification, coordinates in self.__points:
+            distance = metric_to_be_used(coordinates, point)
+            distances.append((distance, classification))
 
         distances.sort()
 
         print(distances)
 
-        return distances[0][1]
+        _, classification = distances[0]
+
+        return classification
