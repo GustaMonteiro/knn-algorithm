@@ -1,5 +1,5 @@
 from src.Distances import euclidean_distance
-
+import numpy as np
 
 class Knn:
     def __init__(self) -> None:
@@ -42,9 +42,9 @@ class Knn:
         return self.__k
 
     def add_points(self, points: list[tuple[int, list]]) -> int:
-        if not self.is_valid_list_of_points(points):
-            print("[Error] - You need to pass a list of tuples to insert points")
-            return -1
+        # if not self.is_valid_list_of_points(points):
+        #     print("[Error] - You need to pass a list of tuples to insert points")
+        #     return -1
 
         if len(points) == 0:
             print("[Warning] - The list of points was empty")
@@ -75,17 +75,22 @@ class Knn:
             kwargs.get("metric") if kwargs.get("metric") is not None else self.__metric
         )
 
-        if not isinstance(point, list) or len(point) != self.__n:
-            return -1
+        # if not isinstance(point, list) or len(point) != self.__n:
+        #     return -1
 
-        distances = []
+        # distances = []
+        possible_classification = -1
+        smallest_distance = 99999999
 
         for classification, coordinates in self.__points:
             distance = metric_to_be_used(coordinates, point)
-            distances.append((distance, classification))
+            if distance < smallest_distance:
+                smallest_distance = distance
+                possible_classification = classification
+            # distances.append((distance, classification))
 
-        distances.sort()
+        # distances.sort()
 
-        _, classification = distances[0]
+        # _, classification = distances[0]
 
-        return classification
+        return possible_classification
