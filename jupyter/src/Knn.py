@@ -1,4 +1,4 @@
-from Distances import euclidean_distance
+from src.Distances import euclidean_distance
 
 
 class Knn:
@@ -63,7 +63,8 @@ class Knn:
                 return -1
 
         self.__points += points
-
+        print(len(points), "points were added!")
+        
         return len(points)
 
     def get_points(self):
@@ -84,8 +85,6 @@ class Knn:
             distances.append((distance, classification))
 
         distances.sort()
-
-        print(distances)
 
         _, classification = distances[0]
 
