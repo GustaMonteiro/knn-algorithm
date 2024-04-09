@@ -1,5 +1,6 @@
 from src.Distances import euclidean_distance
 import numpy as np
+from src.Settings import *
 
 class Knn:
     def __init__(self) -> None:
@@ -42,9 +43,10 @@ class Knn:
         return self.__k
 
     def add_points(self, points: list[tuple[int, list]]) -> int:
-        # if not self.is_valid_list_of_points(points):
-        #     print("[Error] - You need to pass a list of tuples to insert points")
-        #     return -1
+        if not GlobalSettings.USE_NUMPY_ARRAY:
+            if not self.is_valid_list_of_points(points):
+                print("[Error] - You need to pass a list of tuples to insert points")
+                return -1
 
         if len(points) == 0:
             print("[Warning] - The list of points was empty")
@@ -74,9 +76,10 @@ class Knn:
         metric_to_be_used = (
             kwargs.get("metric") if kwargs.get("metric") is not None else self.__metric
         )
-
-        # if not isinstance(point, list) or len(point) != self.__n:
-        #     return -1
+        
+        if not GlobalSettings.USE_NUMPY_ARRAY:
+            if not isinstance(point, list) or len(point) != self.__n:
+                return -1
 
         # distances = []
         possible_classification = -1
