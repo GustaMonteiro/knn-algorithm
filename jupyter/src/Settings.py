@@ -6,18 +6,18 @@ class Settings:
 
     # Dimensions of the images, both for processing, reading
     # and converting from flatten to image formats
-    N_ROWS = 32
-    N_COLUMNS = 32
+    N_ROWS = 80
+    N_COLUMNS = 80
 
     # Run the preprocessing steps
-    PREPROCESS_IMAGES = False
+    PREPROCESS_IMAGES = True
 
     # Number of threads / processes that will be used to speed up the execution
     N_THREADS = 4
 
     # Number of tests that will be used from x_test and y_test
     # (set to 0 if you want to use all tests)
-    N_TESTS_USED = 0
+    N_TESTS_USED = 200
 
     LOG_FILE_NAME = f"svd_{N_ROWS}x{N_COLUMNS}_execution_log.csv"
 
