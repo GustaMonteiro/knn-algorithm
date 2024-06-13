@@ -2,7 +2,7 @@ import os
 
 class Settings:
     # If set to False the Distances and Knn algorithm will use native's python lists (MUCH SLOWER)
-    USE_NUMPY_ARRAY = False
+    USE_NUMPY_ARRAY = True
 
     # Dimensions of the images, both for processing, reading
     # and converting from flatten to image formats
@@ -17,9 +17,9 @@ class Settings:
 
     # Number of tests that will be used from x_test and y_test
     # (set to 0 if you want to use all tests)
-    N_TESTS_USED = 100
+    N_TESTS_USED = 0
 
-    LOG_FILE_NAME = f"{N_ROWS}x{N_COLUMNS}_execution_log.csv"
+    LOG_FILE_NAME = f"svd_{N_ROWS}x{N_COLUMNS}_execution_log.csv"
 
     #####################################################
     # Internal Use
